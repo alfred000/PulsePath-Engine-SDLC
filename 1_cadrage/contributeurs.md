@@ -8,13 +8,7 @@ Ce document établit la matrice des responsabilités et cartographie l'implicati
 
 Le moteur de PulsePath croise des données physiologiques et comportementales complexes. Pour éviter toute dérive algorithmique ou faille de sécurité, chaque règle de gestion (BR) ou contrat de données est soumis à un flux d'approbation strict :
 
-[ Expert Externe / Conseil ] ──► (Validation Scientifique)
-│
-▼
-[ Product Owner / BA ] ──► (Spécification & Logique) ──► [ Architecture Technique ]
-│
-▼
-[ Expert DPO / Conformité ] ──► (Validation Légale & Sécurité)
+[ Expert Externe / Conseil ] ──► (Validation Scientifique)│▼[ Product Owner / BA ]       ──► (Spécification & Logique) ──► [ Architecture Technique ]│▼[ Expert DPO / Conformité ]  ──► (Validation Légale & Sécurité)
 
 ---
 
