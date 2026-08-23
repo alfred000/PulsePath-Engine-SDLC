@@ -37,7 +37,8 @@ Vérifier le statut de verrouillage du compte ciblé en base de données
 ||
 |v
 |[INTERFACE CLIENT] ---> Afficher : "Compte temporairement bloqué." -> (Fin : Échec)
-|+---> [Statut == 'Active']
+|
++---> [Statut == 'Active']
 |
 v
 Appliquer l'algorithme de hachage sur le mot de passe soumis et comparer à l'empreinte au repos
