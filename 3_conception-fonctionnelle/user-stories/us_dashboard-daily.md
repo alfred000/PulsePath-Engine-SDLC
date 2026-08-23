@@ -56,6 +56,7 @@ Pour respecter la charte standardisée du projet, ce composant d'interface utili
 ||
 |( 800 kcal )<-- Calories Restantes (Cible - Consommé + Cardio)|
 ||
+
 |[Prot: 45g/150g][Gluc: 120g/200g][Lip: 35g/70g]|<-- Blocs Nutrition
 
 +-----------------------------------------------------------------------+
