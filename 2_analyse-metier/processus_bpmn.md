@@ -8,7 +8,78 @@ Ce document modélise les flux opérationnels cibles au standard BPMN (Business 
 
 Ce processus décrit la cinématique de validation des credentials et la cinématique défensive de blocage temporaire automatique en cas d'attaque par force brute.
 
-[ Couloir : UTILISATEUR ]|o (Début : Souhaite accéder à son tableau de bord sécurisé)|Saisir les identifiants de connexion (Email / Mot de passe)|v[ Couloir : INTERFACE CLIENT ]|Valider la structure des champs locaux (Format email valide)|+---> [Champs Invalides] ---> Afficher l'erreur de format visuelle et bloquer la soumission|Transmettre la payload d'authentification chiffrée (HTTPS/TLS 1.3)|v[ Couloir : API SERVEUR ]|Vérifier le statut de verrouillage du compte ciblé en base de données|+---> [Statut == 'Locked']|        ||        v|     Rejeter la requête instantanément (Code HTTP 423 Locked)|        ||        v|     [INTERFACE CLIENT] ---> Afficher : "Compte temporairement bloqué." -> (Fin : Échec)|+---> [Statut == 'Active']|vAppliquer l'algorithme de hachage sur le mot de passe soumis et comparer à l'empreinte au repos|+---> [Identifiants INCORRECTS]|        ||        v|     Incrémenter le compteur d'échecs consécutifs en base de données|        ||        +---> [Compteur d'échecs == 5]|        |        ||        |        v|        |     Basculer le statut du compte à 'Locked' (Pendant 15 minutes)|        |     Déclencher l'envoi asynchrone d'un e-mail d'alerte de sécurité|        |        ||        |        v|        |     [INTERFACE CLIENT] ---> Afficher message d'échec générique -> (Fin : Échec)|        ||        +---> [Compteur d'échecs < 5]|                 ||                 v|              [INTERFACE CLIENT] ---> Afficher message d'échec générique -> Retours|+---> [Identifiants CORRECTS]|vRéinitialiser le compteur d'échecs à zéro (0)Générer le couple Access Token (15 min) / Refresh Token (7 jours)Transmettre les jetons chiffrés et configurer le cookie sécurisé|v[ Couloir : INTERFACE CLIENT ]|Stocker l'Access Token en mémoire vive (State applicatif)Lever les verrous de navigation (Guards) et rediriger automatiquement|v[ Couloir : UTILISATEUR ]|O (Fin : Accès au Tableau de Bord accordé)
+[ Couloir : UTILISATEUR ]
+|
+o (Début : Souhaite accéder à son tableau de bord sécurisé)
+|
+Saisir les identifiants de connexion (Email / Mot de passe)
+|
+v
+[ Couloir : INTERFACE CLIENT ]
+|
+Valider la structure des champs locaux (Format email valide)
+|
++---> [Champs Invalides] ---> Afficher l'erreur de format visuelle et bloquer la soumission
+|
+Transmettre la payload d'authentification chiffrée (HTTPS/TLS 1.3)
+|
+v
+[ Couloir : API SERVEUR ]
+|
+Vérifier le statut de verrouillage du compte ciblé en base de données
+|
++---> [Statut == 'Locked']
+||
+|v
+|Rejeter la requête instantanément (Code HTTP 423 Locked)
+||
+|v
+|[INTERFACE CLIENT] ---> Afficher : "Compte temporairement bloqué." -> (Fin : Échec)
+|+---> [Statut == 'Active']
+|
+v
+Appliquer l'algorithme de hachage sur le mot de passe soumis et comparer à l'empreinte au repos
+|
++---> [Identifiants INCORRECTS]
+
+||
+|v
+|Incrémenter le compteur d'échecs consécutifs en base de données
+
+||
+|+---> [Compteur d'échecs == 5]
+
+|||
+||v
+||Basculer le statut du compte à 'Locked' (Pendant 15 minutes)
+||Déclencher l'envoi asynchrone d'un e-mail d'alerte de sécurité
+|||
+||v
+||[INTERFACE CLIENT] ---> Afficher message d'échec générique -> (Fin : Échec)
+
+||
+|+---> [Compteur d'échecs < 5]
+
+||
+|v
+|[INTERFACE CLIENT] ---> Afficher message d'échec générique -> Retours
+|+---> [Identifiants CORRECTS]
+|v
+Réinitialiser le compteur d'échecs à zéro (0)
+Générer le couple Access Token (15 min) / Refresh Token (7 jours)
+Transmettre les jetons chiffrés et configurer le cookie sécurisé
+|
+v
+[ Couloir : INTERFACE CLIENT ]
+|
+Stocker l'Access Token en mémoire vive (State applicatif)
+Lever les verrous de navigation (Guards) et rediriger automatiquement
+|
+v
+[ Couloir : UTILISATEUR ]
+|
+O (Fin : Accès au Tableau de Bord accordé)
+
 ---
 
 ## 🚀 2. Parcours d'Accueil Composite & Initialisation (Launchpad)
