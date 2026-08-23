@@ -50,19 +50,23 @@ Pour respecter la charte standardisée du projet, ce composant d'interface utili
 +-----------------------------------------------------------------------+
 
 |[ < ]Lundi 22 Août 2026 (Fuseau Local)[ > ]|<-- Navigation Calendrier
+
 +-----------------------------------------------------------------------+
 
 ||
 |( 800 kcal )<-- Calories Restantes (Cible - Consommé + Cardio)|
 ||
 |[Prot: 45g/150g][Gluc: 120g/200g][Lip: 35g/70g]|<-- Blocs Nutrition
+
 +-----------------------------------------------------------------------+
 
 ||
 |👟 Pas:8 500 / 10 000 💧 Eau : 1 750 / 3 000 ml|<-- Blocs Habitudes
 |😴 Sommeil : 93.75% (Model 2)|
+
 +-----------------------------------------------------------------------+
 
 ||
 |⚖️ Poids Réel : 80.2 kg 📉 Tendance Lissée : 79.8 kg|<-- Blocs Composition
+
 +-----------------------------------------------------------------------+
