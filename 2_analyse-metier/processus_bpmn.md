@@ -29,9 +29,11 @@ v
 Vérifier le statut de verrouillage du compte ciblé en base de données
 |
 +---> [Statut == 'Locked']
+
 ||
 |v
 |Rejeter la requête instantanément (Code HTTP 423 Locked)
+
 ||
 |v
 |[INTERFACE CLIENT] ---> Afficher : "Compte temporairement bloqué." -> (Fin : Échec)
