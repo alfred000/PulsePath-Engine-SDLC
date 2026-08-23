@@ -52,28 +52,33 @@ Le module `:feature:habits` agit comme un agrégateur de comportements temporels
 L'écran du Traqueur de Sommeil (Model 2) et du Jeûne centralise les minuteurs dynamiques et les compteurs de régularité circadienne :
 
 +-----------------------------------------------------------------------+
-
 |
 [ Routines ]Sommeil (Model 2) & Jeûne Intermittent    
 |
+
 +-----------------------------------------------------------------------+
 |
-😴 TRAQUEUR DE SOMMEIL :                                              
+😴TRAQUEUR DE SOMMEIL :                                              
 |
-| Heure de coucher : [ 22:00 ]       Heure de réveil : [ 06:00 ]       
+| 
+Heure de coucher : [ 22:00 ]       Heure de réveil : [ 06:00 ]       
 |
-|  Nombre d'éveils perçus : [ 2  ]                                      
+|  
+Nombre d'éveils perçus : [ 2  ]                                      
 |
 |
 ⭐ Score d'efficacité calculé (Règle BR-HAB-02) : [ 93.75% ]          
 |
+
 +-----------------------------------------------------------------------+
 |  
 ⏱️ CHRONOMÈTRE DE JEÛNE INTERMITTENT :                                
 |
-|Statut : [ 🟢 Jeûne en cours depuis 14h 12min ]                      
 |
-|Objectif cible : 16h 00min (Protocole 16:8)                          
+Statut : [ 🟢 Jeûne en cours depuis 14h 12min ]                      
+|
+|
+Objectif cible : 16h 00min (Protocole 16:8)                          
 |
 |  
 [ 🛑 Arrêter manuellement ]    
