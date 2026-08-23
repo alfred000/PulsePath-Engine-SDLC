@@ -48,6 +48,7 @@
 Pour respecter la charte standardisée du projet, ce composant d'interface utilisateur composite est découpé en briques visuelles autonomes alimentées par des flux asynchrones :
 
 +-----------------------------------------------------------------------+
+
 |[ < ]Lundi 22 Août 2026 (Fuseau Local)[ > ]|<-- Navigation Calendrier
 +-----------------------------------------------------------------------+
 
