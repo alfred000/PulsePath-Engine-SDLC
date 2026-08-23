@@ -89,7 +89,62 @@ O (Fin : Accès au Tableau de Bord accordé)
 
 Ce processus détaille la navigation séquentielle à travers l'interface parent-enfant de l'onboarding et le déclenchement du traitement global asynchrone final.
 
-[ Couloir : UTILISATEUR ]|o (Début : Première connexion réussie post-inscription)|v[ Couloir : INTERFACE CLIENT (Conteneur Parent / Composants Enfants) ]|Initialiser le State temporaire de l'Onboarding|+---> Étape 1 : Afficher l'introduction pédagogique et valider les prérequis|+---> Étape 2 [US-07] : Saisir Sexe, Âge, Taille, Poids et Mensurations initiales|        ||        v (Validation stricte des plages de la règle BR-ONB-01)|+---> Étape 3 [US-08] : Sélectionner l'Objectif de performance (Perte, Gain, Maintien)|+---> Étape 4 [US-11] : Autoriser et coupler les capteurs IoT / Wearables (Optionnel)|+---> Étape 5 [US-15] : Définir les fenêtres de jeûne et les cibles de pas/sommeil|+---> Étape 6 [US-12] : Sélectionner le Régime, le nombre de convives et les exclusions|+---> Étape 7 [US-13] : Choisir la répartition d'entraînement hebdomadaire (Split)|+---> Étape 8 [US-14] : Confirmer le Niveau d'Activité et la formule Katch-McArdle|+---> Étape 9 : Cliquer sur le bouton de finalisation "Lancer mon profil" (Launchpad)|v[ Couloir : INTERFACE CLIENT ]|Désactiver l'écran, afficher un loader de calcul et envoyer la payload高度 consolidée|v[ Couloir : API SERVEUR (Traitement Asynchrone en Arrière-plan) ]|Ouvrir une transaction atomique en base de données locale chiffréeEnregistrer le profil biologique et initialiser le statut [IsOnboarded = Vrai]Calculer le BMR de référence (Katch-McArdle) et la dépense énergétique journalière (TDEE)Déclencher le planificateur pour compiler :1. Le premier cycle de menus personnalisé (sans les allergènes exclus)2. L'agenda d'entraînement physique de la semaine (Musculation / Cardio)Valider la transaction (Commit)Retourner le signal de succès (HTTP 201 Created)|v[ Couloir : INTERFACE CLIENT ]|Détruire définitivement le contexte visuel de l'OnboardingRediriger l'utilisateur vers l'espace Tableau de Bord personnalisé|v[ Couloir : UTILISATEUR ]|O (Fin : Plateforme configurée et prête pour le pilotage métabolique)
+[ Couloir : UTILISATEUR ]
+|
+o (Début : Première connexion réussie post-inscription)
+|
+v
+[ Couloir : INTERFACE CLIENT (Conteneur Parent / Composants Enfants) ]
+|
+Initialiser le State temporaire de l'Onboarding
+|
++---> Étape 1 : Afficher l'introduction pédagogique et valider les prérequis
+|
++---> Étape 2 [US-07] : Saisir Sexe, Âge, Taille, Poids et Mensurations initiales
+
+||
+|v (Validation stricte des plages de la règle BR-ONB-01)
+|
++---> Étape 3 [US-08] : Sélectionner l'Objectif de performance (Perte, Gain, Maintien)
+|
++---> Étape 4 [US-11] : Autoriser et coupler les capteurs IoT / Wearables (Optionnel)
+|
++---> Étape 5 [US-15] : Définir les fenêtres de jeûne et les cibles de pas/sommeil
+|
++---> Étape 6 [US-12] : Sélectionner le Régime, le nombre de convives et les exclusions
+|
++---> Étape 7 [US-13] : Choisir la répartition d'entraînement hebdomadaire (Split)
+|
++---> Étape 8 [US-14] : Confirmer le Niveau d'Activité et la formule Katch-McArdle
+|
++---> Étape 9 : Cliquer sur le bouton de finalisation "Lancer mon profil" (Launchpad)
+|
+v
+[ Couloir : INTERFACE CLIENT ]
+|
+Désactiver l'écran, afficher un loader de calcul et envoyer la payload consolidée
+|
+v
+[ Couloir : API SERVEUR (Traitement Asynchrone en Arrière-plan) ]
+|
+Ouvrir une transaction atomique en base de données locale chiffrée
+Enregistrer le profil biologique et initialiser le statut [IsOnboarded = Vrai]
+Calculer le BMR de référence (Katch-McArdle) et la dépense énergétique journalière (TDEE)
+Déclencher le planificateur pour compiler :
+1. Le premier cycle de menus personnalisé (sans les allergènes exclus)
+2. L'agenda d'entraînement physique de la semaine (Musculation / Cardio)
+Valider la transaction (Commit)
+Retourner le signal de succès (HTTP 201 Created)
+|
+v
+[ Couloir : INTERFACE CLIENT ]
+|
+Détruire définitivement le contexte visuel de l'OnboardingRediriger l'utilisateur vers l'espace Tableau de Bord personnalisé
+|
+v
+[ Couloir : UTILISATEUR ]
+|
+O (Fin : Plateforme configurée et prête pour le pilotage métabolique)
 ---
 
 ## 🧭 3. Chargement et Navigation Temporelle du Tableau de Bord Quotidien
